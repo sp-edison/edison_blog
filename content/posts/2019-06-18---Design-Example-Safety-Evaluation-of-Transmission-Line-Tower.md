@@ -15,7 +15,6 @@ tags:
 description: "송전탑은 발전소에서 만든 전력을 멀리 있는 공장에나 일반 가정 등으로 수송하는 송전선로를 지지하 기 위한 탑이다. 수송 전력에 따라 무게가 10~45t인 대형구조물로, 고압의 전류가 흐르는 전선을 지지 하고 있기 때문에 송전탑 구조의 안전성이 매우 중요하다. 본 예제에서는 송전탑의 설계에 요구되는 안 전성을 평가하는 과정을 제시한다. 또한 학생들이 직접 설계를 변경하면서 안전성을 평가해보도록 하여 안전성 평가의 과정을 이해할 수 있도록 한다."
 ---
 
-
 - [1장 개요](#1장-개요)
 - [2장 구조 설명](#2장-구조-설명)
 - [3장 바람에 의한 하중](#3장-바람에-의한-하중)
@@ -39,11 +38,9 @@ description: "송전탑은 발전소에서 만든 전력을 멀리 있는 공장
 
 2장에서는 예제로 사용될 송전탑에 대한 스펙을 설명하고, 3장과 4장에서는 설계 하중 도출 과정, 안 전성 평가에 사용되는 설계 규격에 대한 설명을 한다. 5장에서 유한요소해석 모델과 해석 방법을 제시 하고, 6장에서 해석 결과를 바탕으로 설계 평가한다. 7장에서는 설계 변경을 하여 안전성이 어떻게 바뀌 는지 관찰한다. 8장에서는 모멘트 비교 등을 고찰한다.
 
-
 ## 2장 구조 설명
 
 본 예제에서 사용한 송전탑의 도면은 관련 논문으로부터 발췌하여 단순화하였다[1]. 기둥은 항복 응력 이 450MPa인 고장력 강으로 되어 있고, 나머지는 연강으로 이루어 졌다. 높이는 59m, 최대 너비는 26m 이고, 허리 부분은 4.1m이다. 송전탑의 형상과 치수는 *그림 1*에 도시하였다. 기재된 치수는 𝑚𝑚 단위 이다.
-
 
 ![그림 1](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/0.png)
 *그림 1 송전탑의 도면*
@@ -51,6 +48,7 @@ description: "송전탑은 발전소에서 만든 전력을 멀리 있는 공장
 본 예제에서는 송전탑 부재의 단면에 따른 안전성을 평가한다. 굽힘 강성이 크도록 하기 위해 I형 단면 을 갖는 보 요소로 모델링 한다 [2].
  
 ## 3장 바람에 의한 하중
+
 송전탑을 설계할 때에는 자중, 바람에 의한 하중, 전선에 의한 하중, 지진 하중 등 다양한 하중을 고려 하여 설계해야 한다. 본 예제에서는 바람에 의한 하중(이하 풍하중)과 전선에 의한 하중을 고려한다. 본 장에서는 설계 코드를 통한 풍하중 계산 과정에 대해 소개한다.
 
 설계 코드는 American Society of Civil Engineers(ASCE)에서 제작한 [“Minimum Design Loads for Buildings and Other Structures”](https://law.resource.org/pub/us/cfr/ibr/003/asce.7.2002.pdf)를 사용하였다 [3]. 이 코드는 바람, 비, 눈, 얼음, 지진 등 다양한 하 중이 건물 및 구조에 작용할 때 하중을 계산하는 방법을 나타낸다. 
@@ -58,7 +56,7 @@ description: "송전탑은 발전소에서 만든 전력을 멀리 있는 공장
 본 예제에서는 Main-Wind Force Resisting System(MWFRS)의 풍하중 계산 방법을 명시하고 있는 “Chapter 6.0 Wind Loads”를 참고하 였다. 하중 계산 방법으로 Simplified Procedure, Analytical Procedure, Wind Tunnel Procedure의 세 가지 방법을 제안하고 있다. “6.2 DEFINITIONS”의 BUILDING OF OTHER STRUCTURE, REGULAR- SHAPED의 정의에 따라 “6.5 METHOD2-ANALYTICAL PROCEDURE”로 하중을 계산한다.
 
 ### 1. Basic wind speed(𝑽), Wind directionality factor 𝑲𝒅
-   
+
 1971년부터 2014년까지 한국에 기록된 최대 풍속이 43𝑚/𝑠이므로 이 속도를 basic wind speed 𝑉로 설정한다 [4]. 송전탑은 Lattice Framework이므로 Wind directionality factor 𝐾𝑑는 코드의 “Table 6-4, Wind Directionality Factor, 𝐾𝑑”로부터 0.85가 된다.
 
 ### 2. Building and structure category, Surface roughness Category, Exposure Category
@@ -109,15 +107,14 @@ $$
 |:----------:|:-------------:|
 | Velocity pressure<br> 𝑞𝑧 (6-15)  | $ K_{z}=\left\{\begin{array}{ll}{2.01\left(\frac{z}{z_{g}}\right)^{\frac{2}{\alpha}}} & {\text { for } 4.572 m \leq z} \\ {2.01\left(\frac{15}{z_{g}}\right)^{\frac{2}{\alpha}}} & {\text { for } z \leq 4.572 m}\end{array}\right. $ |
 
-
 따라서 무게중심이 4.572𝑚보다 낮은 부재와 높은 부재를 구분하여 적용한다. 3-s gust speed power law exponent α는 “Table 6-3, Velocity Pressure Exposure Coefficients, 𝐾h and 𝐾𝑧”에서 Exposure category가 B이기 때문에 7이 된다.
 
-
 ### 6. Force coefficients(𝑪𝒇)
+
 “Figure 6-22, Other Structures – Method 2, Force Coefficients, 𝐶 ”에서 송전탑의 경우 ε (ratio
 of solid area to gross area)가 0.1보다 작고 Flat-Sided Member에 속하므로 Force coefficients 𝐶는 2가 된다.
 
-###7. Design wind load(𝒑)
+### 7. Design wind load(𝒑)
 
 최종 설계 풍하중은 다음과 같이 계산한다.
 
@@ -151,7 +148,7 @@ Gustresponsefactor는 바람의 난류 및 동적 거동을 반영하기 위해 
 
 설계 코드 [[5]](http://questin.org/sites/default/files/standards/is.802.1.1.1995.pdf)의 8.4에는 다음과 같이 wind pressure를 계산하도록 추천하고 있다.
 
-$$ 
+$$
 P_{d}=0.6 V^{2}
 $$
 
@@ -172,7 +169,6 @@ $$
 F_{w}=1999 k g / k m \times 450 m \times 9.81 m / s^{2}=8.8246 k N
 $$
 
-
 ## 5장 설계 규격
 
 본 예제에서는 AISC(American Institute of Steel Construction)에서 제작한 [‘AISC 360-05; Specification for Structural Steel Buildings’](https://www.aisc.org/globalassets/aisc/publications/standards/a360-16-spec-and-commentary.pdf)를 이용해 설계 평가를 한다. 이 규격은 철 구조물(steelframed buildings and other structures)의 설계에 대한 기준이 제시되어 있다[9].
@@ -187,7 +183,7 @@ $$
 R_{a} \leq \frac{R_{n}}{\Omega}
 $$
 
-where, 
+where,
 
 $$
 \begin{array}{l}{R_{a} : \text {required strength }(A S D)} \\\\ {R_{n} : \text { nominal strength }} \\\\ {\Omega : \text { safty factor }} \\\\ {\frac{R_{n}}{\Omega} : \text { allowable strength }}\end{array}
@@ -198,7 +194,6 @@ LRFD(Load and Resistance Factor Design) 는 각 부재의 설계 강도(Design s
 $$
 R_{u} \leq \phi R_{n}
 $$
-
 
 where,
 $$
@@ -221,12 +216,9 @@ $$
 |Safety factor|Ω𝑡 = 1.67|
 |Allowable tensile strength|𝑃𝑛/Ω𝑡|
 
-
-
 #### 2) Design of members for compression
 
 축 방향 정적 압축력을 받는 부재의 허용 강도를 구한다. 각 파라미터의 식은 다음과 같다. 𝐸는 𝑌𝑜𝑢𝑛𝑔′𝑠⁡ 𝑚𝑜𝑑𝑢𝑙𝑢𝑠를 의미한다.
-
 
 |파라미터 종류| 식 |
 |--------|---------|
@@ -242,19 +234,16 @@ $$
 \text {Slenerness ratio}=K L / r
 $$
 
-where, 
+where,
 $$
 \begin{array}{l}{\text {K: the effective length factor}} \\\\ {\text {L: length of the member }} \\\\ {\text { r: governing radius of gyration }}\end{array}
 $$
 
-
 이 𝑆𝑙𝑒𝑛𝑒𝑟𝑛𝑒𝑠𝑠⁡ 𝑟𝑎𝑡𝑖𝑜 값에 따라 𝐹𝑐𝑟 을 다르게 구한다. 
-
 
 #### 3) Design of members for flexure
 
 Principal axis에 대해 굽힘(bending)을 받는 부재의 허용 강도를 구한다. 각 파라미터의 식은 다음 과 같다.
-
 
 |파라미터 종류| 식 |
 |--------|---------|
@@ -273,15 +262,15 @@ $$
 \begin{array}{ll}{\frac{P_{r}}{P_{c}}+\frac{8}{9}\left(\frac{M_{r x}}{M_{c x}}+\frac{M_{r y}}{M_{c y}}\right) \leq 1.0} & {\text { for } \frac{P_{r}}{P_{c}} \geq 0.2} \\\\ {\frac{P_{r}}{2 P_{c}}+\left(\frac{M_{r x}}{M_{c x}}+\frac{M_{r y}}{M_{c y}}\right) \leq 1.0} & {\text { for } \frac{P_{r}}{P_{c}}<0.2}\end{array}
 $$
 
-
 where,
 $$
 \begin{array}{l}{P_{r} : \text {required axial compressive (or tensile) strength}} \\\\ {M_{r} : \text {required flexural strength}} \\\\ {P_{c} : \text { allowable axial compressive (or tensile)strength }} \\\\ {M_{c} : \text { allowable flexural strength }}\end{array}
 $$
- ⁡ ⁡ ⁡ ⁡ ⁡ ⁡ ⁡
+
 ### 3. 설계 평가 방법
 
 안전 여유(Safety Margin)를 다음과 같이 정의한다.
+
 $$
 \eta \equiv\left(\frac{R_{n}}{\Omega}\right) / R_{a}
 $$
@@ -298,10 +287,8 @@ $$
 
 그림 2는 전처리기에 나타나는 유한요소모델의 모습이다.
 
-
 ![그림 2](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/1.jpg)
 *그림 2. 송전탑 유한요소 모델*
-
 
 ### 1. Elements
 
@@ -310,7 +297,7 @@ $$
 ### 2. Boundary conditions
 
 송전탑과 지면이 맞닿는 4개의 절점의 모든 자유도를 구속한다.
- 
+
 ### 3. Loads
 
 그림 2에 나타난 하중은 도면을 발췌한 논문[1]에서 시뮬레이션에 이용한 전선에 의한 하중을 표 시한 것이다. 하중이 송전탑의 측방향으로 가해지고 있다. 따라서 풍하중도 측방향으로 가해지는 경우가 주어진 하중 조건에서 최대 하중이 가해지는 경우라고 할 수 있다. 따라서 송전탑의 측면에 풍하중이 작용하는 것을 가정한다.
@@ -321,21 +308,17 @@ $$
 
 그림 3은 송전탑의 초기 모델링에 이용한 부재가 어떤 단면을 가지고 있는지 나타낸 것이다.
 
-
 ![그림 3](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/2.png)
 *그림 3. 유한요소모델에 사용된 Beam 단면*
 
-
 단면 형상은 Gere의 [“Mechanics of Materials, 7ed”](https://www.academia.edu/34277150/Mechanics_of_Materials_7th_edition_beer.pdf) [2]의 Appendix E 에서 소개하고 있는 규격 단면 을 사용하였고, 각 부재의 세부적 치수는 표 1과 같다.
- 
+
 *표 1. 초기 모델의 단면 형상 치수*
 ![표 1](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/table1.png)
 
-
-
 ### 5. Material properties
 
- 송전탑의 재질은 steel이다 [1]. 영 계수는 210𝐺𝑃𝑎, 푸아송 비는 0.3으로 설정하였다.
+송전탑의 재질은 steel이다 [1]. 영 계수는 210𝐺𝑃𝑎, 푸아송 비는 0.3으로 설정하였다.
 
 ## 7장 해석 결과 및 설계 평가
 
@@ -344,9 +327,6 @@ $$
 ![그림 4](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/3.jpg)
 *그림 4. 안전성을 평가한 요소(11번 요소)*
 
-
-
-
 유한요소해석 결과로 나온 11번 요소의 절점 힘을 5장에서 제시한 설계 조건식에 대입하여 안전 여유 값을 도출한다. 학생들은 안전 여유가 계산되도록 작성된 MATLAB 파일을 이용하도록 한다. 초기 단면 에 대한 안전 여유 값은 다음과 같다.
 
 $$
@@ -354,13 +334,12 @@ $$
 $$
 
 도출된 안전 여유가 1보다 작기 때문에 설계조건을 위반하게 되어 안전하지 못한 상태이다.
- 
+
 ## 8장 설계 변경
 
 안전한 설계를 위하여 최하단의 부재 “HE180B”를 “HE220B”로 변경한다. 표 2는 변경된 부재의 치수 이다.
 
 *표 2. 변경된 모델의 단면 형상 치수*
-
 ![표 2](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/table2.png)
 
 변경된 설계에 대한 안전 여유 값은 다음과 같다.
@@ -369,9 +348,7 @@ $$
 \eta=1.966
 $$
 
-
 도출된 안전 여유가 1보다 크기 때문에 설계 조건을 만족하고, 안전성 평가를 통과하였음을 확인할 수 있다.
-
 
 ## 9장 고찰
 
@@ -380,9 +357,8 @@ $$
 ![그림 5](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/4.png)
 *그림 5. 보 요소와 트러스 요소의 배치*
 
-
 모델링을 할 때 풍하중은 분포하중으로 적용된다. 분포하중은 절점에 부여되는 하중과 등가 일의 원 리를 만족하도록 하여 절점력으로 변환된다. 보 요소에 대한 분포하중은 집중하중과 집중 모멘트로 변 환된다. 한편 트러스 요소로 모델링 되는 부재가 받는 풍하중을 적용하기 위해 해당 부재가 지지하는 전체 하중을 구한 뒤 절점에 집중하중의 형태로 부여하도록 한다. 이렇게 모델링 하여 해석한 결과를 그림 6에 도시하였다.
- 
+
 ![그림 6-1](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/5.png)
 *그림 6-1. 해석 결과의 변위 해를 후처리기에서 나타낸 모습 (보 요소만으로 모델링 한 경우)*
 
@@ -393,12 +369,12 @@ $$
 
 두 경우에 대해 기둥에 작용하는 모멘트에 대한 선도를 그려본다. 그림 7은 모멘트 선도를 그린 요소 를 녹색으로 표현한 것이고, 그림 8은 두 경우에 대한 모멘트 선도를 나타낸 것이다. 이 때 모멘트 선 도에 나타난 요소 절점의 순서는 아래에서 위 방향이다. 즉, 그림 8에서 1이라고 표현된 절점이 가장 아래의 절점이다.
 
-
 ![그림 7](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/7.jpg)
 *그림 7. 모멘트 선도를 그린 기둥*
- 
+
 ![그림 8-1](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/8.png)
 *그림 8-1. 모멘트의 비교 (왼쪽: 그림 7에서 highlight 된 요소에 나타나는 모멘트*
+
 ![그림 8-2](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/9.png)
 *그림 8-2. 모멘트의 비교 (전선에 의한 하중과 좌측과 우측을 잇는 보 요소를 트러스 요소로 모델링 한 경우에 나타나는 모멘트)*
 
@@ -447,22 +423,19 @@ $$
 
 [TLT_Modified_BeamTruss.csd](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/TLT_Modified_BeamTruss.csd)
 
-
 ### 관련 Science App
 
 전후처리기 프로그램 : [EdisonPrePost](https://www.edison.re.kr/web/csd/scienceappstore/-/scienceapp/EdisonPrePost/2-0-0/view)
 
 해석 프로그램 : [CASADSolver integrated](https://www.edison.re.kr/web/csd/scienceappstore/-/scienceapp/CASADSolver_integrated/1-0-0/view)
 
-### 하중 계산 엑셀 파일 
+### 하중 계산 엑셀 파일
 
 [요소별_하중.xlsx](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/요소별_하중.xlsx)
 
 [하중_계산_과정.xlsx](/media/POST/Safety-Evaluation-of-Transmission-Line-Tower/하중_계산_과정.xlsx)
 
-
 [원본 컨텐츠 파일 다운 받으러 가기](https://www.edison.re.kr/web/csd/contents?p_p_id=edisoncontent_WAR_edisoncontent2016portlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_edisoncontent_WAR_edisoncontent2016portlet_myaction=generalModifyView&_edisoncontent_WAR_edisoncontent2016portlet_contentDiv=2001004&_edisoncontent_WAR_edisoncontent2016portlet_contentSeq=20006)
-
 
 ## 참고 문헌
 
@@ -472,15 +445,16 @@ $$
 
 [3] ASCE, “Minimum Design Loads for Buildings and Other Structures 2-nd ed.”, 2003
 
-[4] 한국 기상청 홈페이지, http://www.kma.go.kr
+[4] 한국 기상청 홈페이지, <http://www.kma.go.kr>
 
 [5] IS 802: Indian Standard, Use of Structural Steel in Overhead Transmission Line Towers – Code of Practice, Part 1 Materials, Loads and Permissible stresses, Section 1 Materials and Loads, 3rd revision, 1995.
 
 [6] C. Reynolds, Review of 400kV & 220kV trans-power proposal, Electricity commission PB power, ISO 9001, 2000.
 
 [7] 송전선 관련 업체 홈페이지 (Uttar Pradesh power transmission corporation limited)
-http://upptcl.org/tech_info/conductors_for_trans.htm
-http://upptcl.org/tech_info/current_carrying.htm
+<http://upptcl.org/tech_info/conductors_for_trans.htm>
+<http://upptcl.org/tech_info/current_carrying.htm>
 
-[8] Conductor data sheet, Aluminum conductors steel reinforced (ACSR) [9] AISC, “360-05; Specification for Structural Steel Buildings”, 2005
-   
+[8] Conductor data sheet, Aluminum conductors steel reinforced (ACSR)
+
+[9] AISC, “360-05; Specification for Structural Steel Buildings”, 2005
