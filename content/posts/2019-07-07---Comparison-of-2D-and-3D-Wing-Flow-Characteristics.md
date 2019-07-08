@@ -1,28 +1,26 @@
 ---
-title: Comparison of 2D and 3D Wing Flow Characteristics
+title: "Comparison of 2D and 3D Wing Flow Characteristics"
 date: "2019-07-07T22:40:32.169Z"
 template: "post"
 draft: false
 slug: "/posts/Comparison-of-2D-and-3D-Wing-Flow-Characteristics"
-category: "CFD"
+category: "Computational Fluid Dynamics"
 tags: 
  - "2D airfoile"
  - "3D_Incomp"
-
 description: "EDISON 사이언스 앱을 활용해 2차원 익형과 3차원 날개 유동 특성 비교"
 ---
 
-## 2차원 익형, 3차원 날개 비교
-
-- 2차원익형
-  - 2차원 날개는 일정한 익형이 무한한 span을 가진다고 가정. 
-  - 전체적인 날개 대신 익형 주위 유동을 해석.
-- 3차원날개
-  - 3차원 날개는 유한한 span을 가짐.
-  - 날개의 끝에서 생기는 wing-tip vortex로 인하여 2차원과 다른 유동 특성을 가짐.
-  - Aspect ratio(가로 세로 비)가 작을수록 3차원 날개 특성을 가짐.
-
+ ## 2차원 익형, 3차원 날개 비교
+  - 2차원익형
+    - 2차원 날개는 일정한 익형이 무한한 span을 가진다고 가정. 
+    - 전체적인 날개 대신 익형 주위 유동을 해석.
+  - 3차원날개
+    - 3차원 날개는 유한한 span을 가짐.
+    - 날개의 끝에서 생기는 wing-tip vortex로 인하여 2차원과 다른 유동 특성을 가짐.
+    - Aspect ratio(가로 세로 비)가 작을수록 3차원 날개 특성을 가짐.
 ![Aspect ratio](/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/0.jpg)
+
 
 Aspect Ratio
 
@@ -34,7 +32,6 @@ $$
 AR : Aspect Ratio A : 날개 넓이
 b : Span 길이
 c : chord 길이
-           2
 
 ## 3차원 날개에서 Downwash 발생 원리
 
@@ -46,8 +43,6 @@ c : chord 길이
   - Aspect ratio가 커질수록 downwash가 커짐.
 
 ![Aspect ratio](/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/03.jpg)
-        3
-
 
 
 ## Local relative wind, Induced AOA(Angle of Attack)
@@ -62,7 +57,6 @@ c : chord 길이
 ![Aspect ratio](/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/3.jpg)
 
 
- 4
 
  
 ## 3차원 날개의 양력 ,항력 계수
@@ -89,7 +83,6 @@ $C_{d, 2 d}$ : 2차원 drag coefficient
 $AR$ : Aspect ratio
 
 
-     5
 
 ## Simulation Result
 - 3차원 NACA0012 날개에서의 wingtip vortex
@@ -97,7 +90,7 @@ $AR$ : Aspect ratio
   - Reynolds number: 2000
   - AOA: 2.0 degree
 
-![Aspect ratio](/Desktop/06.jpg)
+![Aspect ratio](/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/06.jpg)
 
 
 
