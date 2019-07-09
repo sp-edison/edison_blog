@@ -21,7 +21,7 @@ description: "EDISON 사이언스 앱을 활용해 Self-propulsion test를 통�
 - 추진기: 추력/토크 (프로펠러 단독 시험)
 - **선체-추진기 상호작용: 반류비, 추력감소비, 상대회전효율 (자항 시험)**
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/01.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/01.jpg)
 
 ### 추진기의 동력 전달과정
 
@@ -32,7 +32,7 @@ description: "EDISON 사이언스 앱을 활용해 Self-propulsion test를 통�
 
 - 1.실선 스케일의 2.선체 반류장안에서 작동하는 프로펠러가 3.선체를 일정 한 속력으로 추진하기 위해 4.축에 가해줘야 하는 일률을 추정하기 위함
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/1.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/1.jpg)
 
 ### 자항 상태의 특성
 
@@ -43,7 +43,7 @@ description: "EDISON 사이언스 앱을 활용해 Self-propulsion test를 통�
 - 프로펠러 유입류가 시공간적으로 불균일 --> 토크-추력 특성의 수정 필요
   - 상대회전효율( $\eta_{\mathrm{R}}$ )과 관련
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/02.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/02.jpg)
 
 ### 자항점 (Self propulsion point)
 
@@ -88,7 +88,7 @@ $$
 w_{T}=\frac{V-V_{A}}{V}=\frac{J_{V}-J_{A}}{J_{V}}
 $$
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/03.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/03.jpg)
 
 - 실선 스케일의 높은 Reynolds 수 조건에서는 길이 차원에 대해 무차원화된 경 계층의 두께가 낮은 Reynolds 수 조건에 비해 작아짐
   - 마찰저항계수의 비교로 확인할 수 있음
@@ -97,7 +97,7 @@ $$
 w_{T S}=(t+0.04)+\left(w_{T M}-t-0.04\right)\left(\frac{C_{V S}}{C_{V M}}\right)
 $$
 
-![Aspect ratio](/public/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/003.jpg)
+![Aspect ratio](/media/POST/Comparison-of-2D-and-3D-Wing-Flow-Characteristics/003.jpg)
 
 ## 2. 자항시험 수행
 
@@ -110,7 +110,7 @@ $$
 - 예인력 (저항 동력계로 계측)
 - 모형선 자세
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/4.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/4.jpg)
 
 ### 실험 시스템의 배치
 
@@ -121,7 +121,7 @@ $$
 - 모형선
   - 자항동력계
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/05.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/05.jpg)
 
 ### 실험 순서
 
@@ -148,7 +148,7 @@ $$
 - 예인력이 일치되는 회전수를 내삽
 - 회전수에 대응되는 추력, 토크값을 내삽
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/06.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/06.jpg)
 
 ### 각종 계수의 계산
 
@@ -160,12 +160,12 @@ $$
   - $w_{T M}=\frac{J_{T M} D_{M} n_{M}}{V_{M}}$
   - $\eta_{R M}=\frac{K_{Q T M}}{K_{Q M}}>1.0$
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/007.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/007.jpg)
 
        
 ### 해석 결과
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/07.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/07.jpg)
 
 ### 실선 자항 요소의 추정
 
@@ -192,7 +192,7 @@ $$
 
 ### 실선성능추정
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/08.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/08.jpg)
 
 ### 자항 시험은 설계 선속 (15.5 knots)에 대해서만 수행
 
@@ -213,4 +213,4 @@ $$
 - KVLCC2 자항시험 결과 (KRISO 제공)
 - 5.512m 모형선 사용 (축척비 1/58)
 
-![Aspect ratio](/public/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/011.jpg)
+![Aspect ratio](/media/POST/Analysis-of-hull-propeller-interaction-through-self-propulsion-test/011.jpg)
