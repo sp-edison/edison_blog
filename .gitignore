@@ -6,3 +6,12 @@ npm-debug.log
 .gatsby-context.js
 .idea
 gatsby-starter-lumen.iml
+
+public/admin/
+public/icons/
+public/page-data/
+public/static/
+public/index.html
+public/manifest.webmanifest
+
+~*
