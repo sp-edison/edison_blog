@@ -7,7 +7,7 @@ slug: "/posts/Cerebrovascular_Arterial_Model_integrated_Yang_V8"
 category: "Computational Medicine"
 tags: 
  - "Ca2+-tension"
- - "uChem"
+ - "cvam_inp2"
 description: "Cerebrovascular Arterial Model integrated Yang V8 Manual"
 ---
 ##뇌혈관동맥 모델 매뉴얼 Cerebrovascular arterial model
@@ -128,6 +128,14 @@ $$
 
 ##Simulation Manual
 
+![Aspect ratio](/media/POST/000010/32.jpg)
+
+![Aspect ratio](/media/POST/000010/33.jpg)
+
+![Aspect ratio](/media/POST/000010/34.jpg)
+
+![Aspect ratio](/media/POST/000010/35.jpg)
+
 
 ##실습내용
 ###간격이 긴 pulse 반복의 효과
@@ -188,3 +196,4 @@ $$
 - 'Reset all and calculate'를 실행한 후, 'display option'의 Force를 선택한다 (선택이 되어 있어도 클릭한다).
 - 'K7'을 10배로 수정하고 'Calculate(reset initial values)'를 실행하여 그 결과를 확인한다.
   
+

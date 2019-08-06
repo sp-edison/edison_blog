@@ -6,16 +6,16 @@ draft: false
 slug: "/posts/humansanode"
 category: "Computatinal Medicine"
 tags: 
- - "quantum chamistry"
- - "uChem"
-description: "2D boundary layer Manual"
+ - "ionic current"
+ - "pacemaker voltage"
+description: "Human S. A. Node Manual"
 ---
 ##manual
 ##인체 동방 결절 세포 모델
 ##Human sinoatrial node cell model
 
 ##내용
-- 소프트웨어 소개 
+- 소프트웨어 소개
 - 이론적 배경 
 - 실행방법 
 - 입력변수 설명 
@@ -65,7 +65,17 @@ description: "2D boundary layer Manual"
 
 ####Ion channels
 11 개의 이온통로와 교환기, 펌프
-  
+
+##실행방법
+![Aspect ratio](/media/POST/000017/8.jpg)
+
+![Aspect ratio](/media/POST/000017/9.jpg)
+
+![Aspect ratio](/media/POST/000017/10.jpg)
+
+![Aspect ratio](/media/POST/000017/11.jpg)
+
+
 ##입력변수 설명
 - $Na$ : Voltage-gated $\mathbf{N a}^{+}$ channel
 - $CaL$ : L-type $\mathbf{C a}^{2+}$ channel
