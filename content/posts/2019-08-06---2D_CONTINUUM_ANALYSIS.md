@@ -4,7 +4,7 @@ date: "2019-08-06T23:40:32.169Z"
 template: "post"
 draft: false
 slug: "/posts/2D_CONTINUUM_ANALYSIS"
-category: "Computational Fluid Dynamics"
+category: "Computational Structural Dynamics"
 tags: 
  - "field equation"
  - "equilibrium equation"
