@@ -57,6 +57,14 @@ description: "2D Continuum linear analysis program Manual"
 ####4.1 2개의 구멍이 있는 2차원 브라켓
 
 ------------------------------------------------------------------------------------------------------------------
+##Simulation Manual
+![Aspect ratio](/media/POST/000021/48.jpg)
+
+![Aspect ratio](/media/POST/000021/49.jpg)
+
+![Aspect ratio](/media/POST/000021/50.jpg)
+
+![Aspect ratio](/media/POST/000021/51.jpg)
 
 ##1. 유한요소법
 ###1.1 유한요소법의 개념
