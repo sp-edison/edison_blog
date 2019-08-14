@@ -30,3 +30,80 @@ description: "전자 에너지 밴드구조 및 상태밀도 시각화 SW Manual
 ![Aspect ratio](/media/POST/000038/6.jpg)
 
 ![Aspect ratio](/media/POST/000038/7.jpg)
+
+- 결정 속에는 이온 껍질에 의한 주기적인 포텐셜이 존재하며, 이에 따라 결정 속에 전자 가 가질 수 있는 에너지가 제한된다.
+- 전자 밴드 구조는 일반적으로 에너지-파수 평면 위의 곡선들로 나타낸다.
+- 결정 속 전자가 존재할 수 있는 에너지 영역을 허용대 (“allowed bands”)라고 부르고, 전자가 취할 수 없는 에너지 영역을 금지대(“forbidden bands”)이라고 부른다.
+- 전자 밴드 구조에 어떻게 전자가 배치되어 있느냐에 따라서 그 고체의 전기 전도성 이나 광학적 특성이 결정된다.
+
+![Aspect ratio](/media/POST/000038/8.jpg)
+
+![Aspect ratio](/media/POST/000038/9.jpg)
+
+- 전자 밴드 구조에 대한 구체적인 이해는 공간군의 대칭성을 이용한 결정 격자의 주기성 을 고려 해야 한다. 결정에서 Schrodinger 식을 풀면 Bloch 파동이 나오게 된다 : 
+
+$$
+\psi_{nk}(r)=e^{iKr}u_{nk}(r)
+$$
+
+여기서 k는 파수이고 결정 내의 전자 움직임의 방향과 관련이 있고 n은 에너지 밴드의 숫자를 나타내는 밴드 인덱스를 나타낸다.
+
+- 파수 k는 결정 격자와 Brillouin영역 내의 방향 및 점에 따라 특정값을 갖는다. 이런 파수는 Γ, Δ, Λ, Σ 등의 관습적인 이름을 가진다.
+ 
+범 함수 밀도이론(DFT)을 통해 나온 에너지(Kohn-Sham total energy, $E_{KS}$) 는 전자 밴드 구조의 에너지($E_{BS}$)와 전자 밀도, 원자의 위치에 따른 에너지의 합으로 쓸 수 있다.
+
+이를 통하여 파수(K momentum space)에 따른 전자 밴드 구조 에너지를 구할 수 있다.
+![Aspect ratio](/media/POST/000038/10.jpg)
+
+##EDISON INPUT Parameters & Run /OUTPUT 설명서
+###BandLab
+![Aspect ratio](/media/POST/000038/11.jpg)
+
+- “Restart file” : LCAODFTLab에서 도출된 전자구조 정보 파일 (restart.tar.gz), LCAODFTLab 매뉴얼 22페이지 참조
+- “Bandline filename” : Band구조 도출을 위한 역공간상 경로가 지정된 파일, Appendix II 참조
+
+###밴드 구조 분석법
+계산 후 에너지 밴드 분석을 위해서는 다음의 세가지 방법을 찾을 수 있음 : 
+- “Visualize” 버튼 $\rightarrow$ “band_*.oneD” 파일들을 가지고 각 라인들을 그려서 확인
+- “Visualize” 버튼 $\rightarrow$ “*.png” 파일을 통해 전체 전자 밴드구조를 확인
+- “Download” 버튼 $\rightarrow$ 다운로드된 Result.zip의 압축을 풀어 해당 디렉토리 중 “siesta.bands” 파일을 SIESTA 유틸리티 프로그램 gnubands 프로그램으로 처리한 후 gnuplot 으로 시각화(Appendix 1 참조)
+
+## Appendix I “gnuband” 유틸리티를 이용한 에너지밴드 분석법
+### Appendix I: gnuband을 이용한 결과 확인
+SIESTA 하위 폴더인 Util 폴더에 있는 gnubands.f 를 컴파일 하여 사용, gnuplot을 통해 전자 밴드 구조 확인 가능: (http://personales.unican.es pp. 5~6참조)
+![Aspect ratio](/media/POST/000038/12.jpg)
+
+### 결과 파일 포맷(*.bands)
+![Aspect ratio](/media/POST/000038/13.jpg)
+
+###예시
+![Aspect ratio](/media/POST/000038/14.jpg)
+![Aspect ratio](/media/POST/000038/15.jpg)
+
+##Appendix II 브릴뤼앙 영역 결정 방법 / SIESTA bandline 설명
+### 브릴뤼앙 영역 결정 방법
+밴드 구조를 그릴 시, 일반적으로 높은 대칭 균형을 가진 브릴뤼앙 대역을 선택 하여 그 리거나 관찰 하고자 하는 영역을 정하여 그리게 되는데 해당 $k$ 점을 확인 하는 방법은 다음 두가지 방법을 취할 수 있음.
+
+브릴뤼앙 대역 데이터 베이스 사용(http://www.cryst.ehu.es/)
+n 각 결정 별로 데이터 베이스를 위의 홈페이지 “KVEC” 에서 확인.
+
+n XCrySDen(원자 모델 뷰어, http://www.xcrysden.org/) 를 통하여 k-path 확인
+XCrySDen 실행èToolsèk-path Selection 후 관찰 하고 자고자하는 브릴뤼앙 대역의 $k$점 클릭 $\rightarrow$ 해당 점의 좌표 표시 (역공간/카테시안 좌표계 표시 가능, http://www.xcrysden.org/doc/kpath.html 참조)
+![Aspect ratio](/media/POST/000038/16.jpg)
+
+![Aspect ratio](/media/POST/000038/17.jpg)
+
+###"band.fdf" 구조
+![Aspect ratio](/media/POST/000038/18.jpg)
+####Band.fdf 파일은 위와 같은 구조로 구성된다.(SEISTA 매뉴얼 pp.61 참조)
+BandLineScale : BandLines 데이터 블록에서 주어지는 $k$ 벡터의 크기를 정해주는 기능을 함.
+- pi/a : $k$ 벡터를 $\pi/a$ 단위의 카테시안 좌표계로 표기할 때 사용.(기본값)
+- ReciprocalLatticeVectors : $k$ 벡터를 역공간 좌표계로 표기 할 때 사용.
+
+BandLines(데이터블록) : 밴드에너지를 계산할 라인을 정해주는 데이터 블록이다. (일반적으로 각 결정마다 다른 높은 대칭균형(high symmetry) 방향으로 정하게 된다.)
+- 마지막 행에 나오는 문자 (L,/Gamma,X..)는 각 $k$ point의 이름으로 반드시 표기 할 필요 없음(optional)
+- 첫번째 행은 그 전 열의 점에서 해당 열의 점까지의 브릴뤼앙 대역에서 계산 할 점의 수를 의미한다. 첫번째 점은 반드시 "1"를 표기해야 한다.
+
+###Band.fdf 구조 예시
+![Aspect ratio](/media/POST/000038/19.jpg)
+![Aspect ratio](/media/POST/000038/20.jpg)
