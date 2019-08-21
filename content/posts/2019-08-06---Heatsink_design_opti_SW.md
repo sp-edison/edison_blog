@@ -4,7 +4,7 @@ date: "2019-08-06T23:40:32.169Z"
 template: "post"
 draft: false
 slug: "/posts/Heatsink_design_opti_SW"
-category: "Computatinal Design"
+category: "Computational Design"
 tags: 
  - "evolutionary algorithm"
  - "genetic algorithm"

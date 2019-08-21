@@ -4,7 +4,7 @@ date: "2019-08-01T23:40:32.169Z"
 template: "post"
 draft: false
 slug: "/posts/humansanode"
-category: "Computatinal Medicine"
+category: "Computational Medicine"
 tags: 
  - "ionic current"
  - "pacemaker voltage"

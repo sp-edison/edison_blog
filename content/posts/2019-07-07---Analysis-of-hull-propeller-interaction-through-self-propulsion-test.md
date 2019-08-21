@@ -4,7 +4,7 @@ date: "2019-07-07T22:40:32.169Z"
 template: "post"
 draft: false
 slug: "/posts/Analysis-of-hull-propeller-interaction-through-self-propulsion-test"
-category: "Computational fluid Dynamics"
+category: "Computational Fluid Dynamics"
 tags: 
  - "Self-propulsion condition"
  - "Propulsion power transmission process"

@@ -129,12 +129,6 @@ $$
 
 ##EDISON program
 
-pre_nstep: pre-equilibration steps
-
-####pre_nstep 값이 0이 아닐 시,
-- pre_temp:temperature for pre-eq.
-- pre_diff:diffusion coeff. for pre-eq.
-- pre-eps:LJ-potential depth for pre-eq.(e/k_B)
 
 - nstep: 총 timestep
 - isave: 해당 step수 마다 결과값 도출
@@ -143,6 +137,13 @@ pre_nstep: pre-equilibration steps
 - rcut: LJ potential의 cutoff radius
 - epsilon: LJ potential의 potential depth(e/k_B)
 - time: 매 step 사이의 시간간격
+- pre_nstep: pre-equilibration steps
+
+####pre_nstep 값이 0이 아닐 시,
+- pre_temp:temperature for pre-eq.
+- pre_diff:diffusion coeff. for pre-eq.
+- pre-eps:LJ-potential depth for pre-eq.(e/k_B)
+
 
 ####결과파일 목록
 - *.pos: 시뮬레이션 마지막 구조 파일
@@ -165,25 +166,121 @@ Time steps / Radius of gyration
 
 ###Visualization program (VMD) 설치
 1. google에서 VMD 검색 후 아래 website 접속
+
 ![Aspect ratio](/media/POST/000053/23.jpg)
 
 2. “Software” -> ”VMD” -> ”Download” 클릭
+
 ![Aspect ratio](/media/POST/000053/24.jpg)
 
 3. 아래 빨간색 상자 클릭 (OS가 윈도우인 경우)
+
 ![Aspect ratio](/media/POST/000053/25.jpg)
 
 4. ID 및 Password 입력 후 “Contunue with ~” 클릭 (계정 생성)
+
 ![Aspect ratio](/media/POST/000053/26.jpg)
 
 5. 공백을 채운다.
+
 ![Aspect ratio](/media/POST/000053/27.jpg)
 
 6. ID 및 Password 입력 후 “Contunue with ~” 클릭 (계정 생성)
+
 ![Aspect ratio](/media/POST/000053/28.jpg)
 
 7. 다운로드 확인
+
 ![Aspect ratio](/media/POST/000053/29.jpg)
 
 8. 다운로드한 프로그램을 실행한 후 change버튼을 통해 경로를 설정
+
 ![Aspect ratio](/media/POST/000053/30.jpg)
+
+9. 실행시킨 VMD의 모습
+
+![Aspect ratio](/media/POST/000053/31.jpg)
+
+![Aspect ratio](/media/POST/000053/32.jpg)
+
+####Visualization program (VMD) 실행
+1. “File” -> “New Molecule” 클릭 후 “Browse”를 클릭한다.
+
+![Aspect ratio](/media/POST/000053/33.jpg)
+
+2. step3의 “~.xyz” 파일을 열고 ”Load” 버튼을 누른다.
+
+![Aspect ratio](/media/POST/000053/34.jpg)
+
+3. ”Graphics” -> ”Representations”를 누른 뒤 ”Drawing Method” 에서 VDW 선택, ”Sphere Scale”을 0.4로 맞춘다.
+
+![Aspect ratio](/media/POST/000053/35.jpg)
+
+4. 실행 결과 (xyz file)
+
+![Aspect ratio](/media/POST/000053/36.jpg)
+
+##참고문헌
+Atkins, P.; Paula, J. Atkins’ Physical Chemistry, 9ed, Oxford University Press: Oxford, 2010.
+
+Reif, F. Fundamentals of Statistical and Thermal Physics, Waveland Press Inc.: Long Grove IL, 1965.
+
+R. Chang and A. Yethiraj, J. Chem. Phys. 114, 7688-7699, 2001.
+
+##응용
+###앙상블 평균 구하기
+####step 1 
+고분자를 만든다.
+
+![Aspect ratio](/media/POST/000053/37.jpg)
+
+####step 2
+생성된 고분자를 이용하여, 독립적으로 step2과정을 반복하여 진행하되, pre_nstep값을 system마다 다르게 설정한다.
+(단, pre_nstep의 값은 충분히 커야하며, pre_eps, pre_diff, pre_temp 값은 같게 진행해야한다.)
+
+![Aspect ratio](/media/POST/000053/38.jpg)
+
+####step 3
+각 system에 대하여, pre-equilibration에서의 값과 다르게 epsilon, temperature, diffusion coefficient 중 하나를 변화시키되, system사이의 각 변수 값들은 동일시 한다.
+
+![Aspect ratio](/media/POST/000053/39.jpg)
+
+####예시:
+Step2 과정 중 pre-equilibration이 300만 step 이후부터라고 가정하고, step1에서 생성된 고분자를 이용하며, temperature quenching을 한다고하면,
+
+![Aspect ratio](/media/POST/000053/40.jpg)
+
+위와 같이 독립적으로 진행한다.(system 사이의 나머지 변수는 동일시, 결과적으로 pre_nstep값 이외의 나머지 값은 system에 무관하게 동일)
+
+####step 4
+앞에서 진행한 simulation의 end-to-end distance 및 radius of gyration을 각각 엑셀에서 ”열기”를 통해 불러온 뒤, “너비가 일정함”을 클릭한 후 “다음” 선택. (반드시 엑셀을 킨 후 열기를 통하여 불러온다)
+
+![Aspect ratio](/media/POST/000053/41.jpg)
+
+####step 5
+각각의 system들의 결과를 하나의 엑셀 파일로 모은다(복사/붙여넣기).
+
+![Aspect ratio](/media/POST/000053/42.jpg)
+
+(단, 같은 물리량끼리 모와야한다.)
+
+####step 6
+동일한 시간에 대하여 물리량을 “평균값”을 구한다. (이를 앙상블 평균이라 함)
+
+![Aspect ratio](/media/POST/000053/43.jpg)
+
+###Pre-equilibration을 하는 이유
+Step1에서 생성된 고분자가 정확히 어떤 상태에서 안정한 구조인지 모르기 때문
+
+Parameter 값들을 설정하여 강제로 하나의 상태에서 안정한 구조로 만들어준다.
+
+![Aspect ratio](/media/POST/000053/44.jpg)
+
+###Pre-equilibration이 잘 진행이 되었는지 확인하는 방법
+Pre_equilibration 과정을 배제하고(pre_nstep=0), nstep값 및 다른 변수들의 값을 설정하고 simulation을 진행하여, R_g 혹은 R_E 값이 평평한 그래프가 나오는 것을 확인한다.
+![Aspect ratio](/media/POST/000053/45.jpg)
+
+###Quenching step의 의미
+강제로 비평형상태를 만들어주어 새로운 평형에 도달하게 할 수 있다. 
+Protein folding이나 enzyme의 구조 형성을 설명하는데 사용할 수 있다.
+![Aspect ratio](/media/POST/000053/46.jpg)
